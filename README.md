@@ -22,19 +22,6 @@ Open [http://localhost:3000](http://localhost:3000)
 npm run test
 ```
 
-## 📚 Project Structure
-
-- `app/` - Application source code
-  - `components/` - Vue components (AppHeader, AppFooter)
-  - `layouts/` - App layouts
-  - `pages/` - Nuxt pages
-  - `assets/css/` - Global styles and CSS variables
-  - `utils/` - Utility functions
-- `server/` - Backend integration
-  - `api/sudoku.ts` - API endpoint for puzzle generation
-  - `api/sudoku.test.ts` - API tests
-- `docs/` - Documentation (Design System, Architecture, API Integration)
-
 ## 🔌 Server-Side API
 
 The application includes a backend layer that proxies requests to the **Sudoku API**:
@@ -43,6 +30,10 @@ The application includes a backend layer that proxies requests to the **Sudoku A
 - **Features:** Input validation, timeout protection (15s), error handling
 - **Configuration:** Runtime settings in `nuxt.config.ts`
 - **Documentation:** See [docs/external_api_sudoku.md](docs/external_api_sudoku.md)
+
+## 📐 Architecture
+
+For detailed information about the project structure, state management, and component hierarchy, see [docs/architecture.md](docs/architecture.md).
 
 ## 🎨 Design
 

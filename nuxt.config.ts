@@ -28,7 +28,7 @@ export default defineNuxtConfig({
 	runtimeConfig: {
 		sudoku: {
 			apiUrl: 'https://sugoku.onrender.com/board',
-			apiTimeout: 15000,
+			apiTimeout: 5000,
 			validDifficulties: ['easy', 'medium', 'hard'],
 		},
 		public: {

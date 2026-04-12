@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import SudokuGrid from '~/components/SudokuGrid.vue';
+
 useSeoMeta({
   title: "Kyudoku | Zen Sudoku Experience",
   description:
@@ -8,7 +10,7 @@ useSeoMeta({
 
 <template>
   <div class="page-container">
-    <!--TODO: implement sudoku grid -->
+    <SudokuGrid />
   </div>
 </template>
 
