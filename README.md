@@ -1,59 +1,41 @@
-# Nuxt Minimal Starter
+# 🧩 Kyudoku
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+A minimalist Sudoku application built with **Nuxt 4**, **TypeScript**, and **Vue 3**.
 
-## Setup
+> Zen Logic Puzzle - Master the nine with focus and minimalist design.
 
-Make sure to install dependencies:
+## 🚀 Quick Start
 
+**Install dependencies:**
 ```bash
-# npm
 npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
 ```
 
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
+**Development server:**
 ```bash
-# npm
 npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
 ```
+Open [http://localhost:3000](http://localhost:3000)
 
-## Production
-
-Build the application for production:
-
+**Testing:**
 ```bash
-# npm
-npm run build
+npm run test
 ```
 
-Locally preview production build:
+## 📚 Project Structure
 
-```bash
-# npm
-npm run preview
-```
+- `app/` - Application source code
+  - `components/` - Vue components (AppHeader, AppFooter)
+  - `layouts/` - App layouts
+  - `pages/` - Nuxt pages
+  - `assets/css/` - Global styles and CSS variables
+  - `utils/` - Utility functions
+- `docs/` - Documentation (Design System, Architecture)
 
-## Hosting
+## 🎨 Design
 
-The project is hosted with [Cloudflare](https://nuxt.com/deploy/cloudflare)
+The application follows a **"Zen Minimalist"** aesthetic. See [docs/design_system.md](docs/design_system.md) for details.
+
+## 🧪 Testing
+
+Vitest + Vue Test Utils for component and utility testing.

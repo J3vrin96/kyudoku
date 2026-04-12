@@ -1,19 +1,28 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  compatibilityDate: "2025-07-15",
+  compatibilityDate: "2026-04-10",
   devtools: { enabled: true },
-  modules: ["@nuxtjs/eslint-module"],
+  modules: ["@nuxtjs/eslint-module", "@nuxt/fonts"],
   css: ["~/assets/css/main.css"],
   nitro: {
     prerender: {
       autoSubfolderIndex: false,
     },
   },
-  webpack: {
-    loaders: {
-      vue: {
-        hotReload: true,
+  builder: "vite",
+  vite: {
+    server: {
+      watch: {
+        usePolling: true,
       },
+      hmr: {
+        protocol: "ws",
+        host: "localhost",
+        overlay: false,
+      },
+    },
+    optimizeDeps: {
+      include: ["@vue/devtools-core", "@vue/devtools-kit"],
     },
   },
   runtimeConfig: {
