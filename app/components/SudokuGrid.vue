@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { watch, onMounted } from "vue";
+import { watch, onMounted, computed } from "vue";
 import { difficultyOptions } from "~/constants/sudoku";
 import { useSudoku } from "~/composables/useSudoku";
 import { useSudokuKeyboard } from "~/composables/useSudokuKeyboard";
@@ -17,6 +17,12 @@ const {
 } = useSudoku();
 
 useSudokuKeyboard(setCellValue, focusedCell, isWon);
+
+const focusedCellIsInitial = computed(() =>
+  focusedCell.value
+    ? grid.value[focusedCell.value.row]?.[focusedCell.value.col]?.initial ?? false
+    : false
+);
 
 watch(difficulty, () => {
   loadGame();
@@ -51,7 +57,7 @@ onMounted(() => {
       </button>
     </div>
 
-    <div class="board-card">
+    <div class="board-card" :class="{ 'board-won': isWon }">
       <div v-if="isLoading" class="skeleton-grid">
         <div v-for="i in 81" :key="i" class="skeleton-cell"></div>
       </div>
@@ -71,11 +77,28 @@ onMounted(() => {
             }"
             @click="focusedCell = { row: rowIndex, col: colIndex }"
           >
-            {{ cell.value ?? "" }}
+            <span v-if="cell.value" :key="cell.value" class="cell-value">{{ cell.value }}</span>
           </div>
         </div>
       </div>
     </div>
+
+    <Transition name="slide-up">
+      <div v-if="focusedCell && !isLoading && !isWon" class="numpad">
+        <button
+          v-for="number in 9"
+          :key="number"
+          class="numpad-btn"
+          :disabled="focusedCellIsInitial"
+          @click="focusedCell && setCellValue(focusedCell.row, focusedCell.col, number)"
+        >{{ number }}</button>
+        <button
+          class="numpad-btn numpad-clear"
+          :disabled="focusedCellIsInitial"
+          @click="focusedCell && setCellValue(focusedCell.row, focusedCell.col, null)"
+        >⌫</button>
+      </div>
+    </Transition>
 
     <div class="game-footer">
       <button

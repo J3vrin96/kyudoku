@@ -34,6 +34,18 @@
   border-radius: 12px;
   box-shadow: var(--shadow-md);
   border: 1px solid var(--border-light);
+  transition: box-shadow 0.5s ease;
+}
+
+.board-won {
+  box-shadow: 0 0 0 2px var(--success-color), var(--shadow-md);
+  animation: win-glow 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes win-glow {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.012); }
+  100% { transform: scale(1); }
 }
 
 .board {
@@ -71,6 +83,22 @@
 .cell:hover {
   background-color: #ebebea;
 }
+
+.cell-value {
+  display: block;
+  animation: cell-pop 0.15s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes cell-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.55);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
 .is-active {
   background-color: #e0e7ff;
   box-shadow: inset 0 0 0 2px var(--primary-accent);
@@ -84,6 +112,15 @@
 .is-error {
   color: var(--error-color);
   background-color: #fef2f2;
+  animation: shake 0.4s cubic-bezier(0.36, 0.07, 0.19, 0.97);
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-4px); }
+  40% { transform: translateX(4px); }
+  60% { transform: translateX(-3px); }
+  80% { transform: translateX(3px); }
 }
 
 .game-footer {
@@ -108,6 +145,11 @@
   transition:
     transform 0.1s,
     opacity 0.2s;
+}
+
+.btn-primary:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(17, 17, 18, 0.18);
 }
 
 .btn-primary:active {
@@ -150,6 +192,57 @@
 .btn-icon:disabled {
   opacity: 0.4;
   cursor: not-allowed;
+}
+
+.numpad {
+  display: none;
+}
+
+@media (pointer: coarse) {
+  .numpad {
+    display: grid;
+    grid-template-columns: repeat(3, 52px);
+    justify-content: center;
+    gap: 6px;
+    width: 100%;
+    margin-top: 16px;
+  }
+}
+
+.numpad-btn {
+  width: 52px;
+  height: 52px;
+  background: var(--surface-color);
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-main);
+  cursor: pointer;
+  transition: all 0.12s ease;
+}
+
+.numpad-btn:hover:not(:disabled) {
+  background: #ebebea;
+  border-color: var(--border-heavy);
+  transform: translateY(-1px);
+}
+
+.numpad-btn:active:not(:disabled) {
+  transform: scale(0.94);
+}
+
+.numpad-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.numpad-clear {
+  width: 100%;
+  grid-column: 1 / -1;
+  padding: 8px;
+  font-size: 0.9rem;
+  color: var(--text-muted);
 }
 
 .alert {

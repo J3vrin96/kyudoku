@@ -4,7 +4,7 @@ import type { SudokuGrid, SudokuResponse, CellValue } from "~/types/sudoku";
 export const useSudoku = () => {
   const grid = useState<SudokuGrid>("sudoku-grid", () => []);
   const isWon = useState<boolean>("sudoku-won", () => false);
-  const isLoading = useState<boolean>("sudoku-loading", () => false);
+  const isLoading = useState<boolean>("sudoku-loading", () => true);
   const difficulty = useState<string>("sudoku-diff", () => "easy");
   const validationMessage = useState<string | null>("sudoku-msg", () => null);
   const focusedCell = useState<{ row: number; col: number } | null>(
