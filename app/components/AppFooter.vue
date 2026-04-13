@@ -12,7 +12,7 @@ const currentYear = getCurrentYear();
       <div class="footer__content-info">
         <p><strong>Kyudoku</strong> &copy; {{ currentYear }}</p>
         <span class="divider">/</span>
-        <p>Frontend Developer Assessment</p>
+        <p>@J3vrin96</p>
       </div>
 
       <div class="footer__stack">

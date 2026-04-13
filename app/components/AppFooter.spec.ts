@@ -25,6 +25,6 @@ describe("AppFooter", () => {
   it("should display the project description", () => {
     const wrapper = mount(AppFooter);
 
-    expect(wrapper.text()).toContain("Frontend Developer Assessment");
+    expect(wrapper.text()).toContain('@J3vrin96');
   });
 });
