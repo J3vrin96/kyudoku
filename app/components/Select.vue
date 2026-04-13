@@ -20,6 +20,8 @@ const handleChange = (event: Event) => {
 };
 </script>
 
+<style scoped src="./Select.css" />
+
 <template>
   <label v-if="label">{{ label }}</label>
 
@@ -29,16 +31,3 @@ const handleChange = (event: Event) => {
     </option>
   </select>
 </template>
-
-<style scoped>
-select {
-  padding: 8px 12px;
-  border-radius: 8px;
-  border: 1px solid var(--border-light);
-  background: var(--surface-color);
-  font-family: var(--font-primary);
-  font-weight: 600;
-  color: var(--text-main);
-  cursor: pointer;
-}
-</style>
