@@ -17,6 +17,7 @@
 		"knip": "knip"
 	},
 	"dependencies": {
+		"animate.css": "^4.1.1",
 		"nuxt": "^4.4.2",
 		"vue": "^3.5.32"
 	},
