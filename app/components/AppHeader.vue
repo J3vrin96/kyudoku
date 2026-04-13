@@ -4,7 +4,23 @@
   <header class="header">
     <div class="header-content">
       <div class="logo">
-        <span class="logo-icon animate__animated animate__rotateIn">🧩</span>
+        <svg
+          class="logo-icon animate__animated animate__fadeIn"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+        >
+          <rect x="1" y="1" width="6" height="6" rx="1.5" />
+          <rect x="9" y="1" width="6" height="6" rx="1.5" />
+          <rect x="17" y="1" width="6" height="6" rx="1.5" />
+          <rect x="1" y="9" width="6" height="6" rx="1.5" />
+          <rect x="9" y="9" width="6" height="6" rx="1.5" />
+          <rect x="17" y="9" width="6" height="6" rx="1.5" />
+          <rect x="1" y="17" width="6" height="6" rx="1.5" />
+          <rect x="9" y="17" width="6" height="6" rx="1.5" />
+          <rect x="17" y="17" width="6" height="6" rx="1.5" />
+        </svg>
         <div class="logo-text">
           <h1>Kyudoku</h1>
           <p>Zen Logic Puzzle</p>

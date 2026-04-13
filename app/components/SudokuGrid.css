@@ -6,7 +6,6 @@
   max-width: 500px;
 }
 
-/* Header & Inputs */
 .board-header {
   width: 100%;
   display: flex;
@@ -29,7 +28,6 @@
   letter-spacing: 0.05em;
 }
 
-/* The Grid Board */
 .board-card {
   background: var(--surface-color);
   padding: 8px;
@@ -49,29 +47,20 @@
 }
 
 .cell {
-  width: 50px;
-  height: 50px;
+  width: min(50px, calc((100vw - 52px) / 9));
+  height: min(50px, calc((100vw - 52px) / 9));
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.25rem;
+  font-size: clamp(0.85rem, 3.5vw, 1.25rem);
   font-weight: 500;
-  color: var(--primary-accent); /* User input color */
+  color: var(--primary-accent);
   background: var(--surface-color);
   border: 0.5px solid var(--border-light);
   cursor: pointer;
   transition: all 0.15s ease;
 }
 
-@media (max-width: 500px) {
-  .cell {
-    width: 40px;
-    height: 40px;
-    font-size: 1.1rem;
-  }
-}
-
-/* Custom Borders for 3x3 Blocks */
 .br-heavy {
   border-right: 2px solid var(--border-heavy);
 }
@@ -79,9 +68,8 @@
   border-bottom: 2px solid var(--border-heavy);
 }
 
-/* Cell States */
 .cell:hover {
-  background-color: #f1f5f9;
+  background-color: #ebebea;
 }
 .is-active {
   background-color: #e0e7ff;
@@ -90,7 +78,7 @@
 }
 .is-initial {
   color: var(--text-main);
-  background-color: #f8fafc;
+  background-color: #f2f2ef;
   font-weight: 700;
 }
 .is-error {
@@ -98,7 +86,6 @@
   background-color: #fef2f2;
 }
 
-/* Footer & Buttons */
 .game-footer {
   margin-top: 32px;
   width: 100%;
@@ -108,13 +95,14 @@
 }
 
 .btn-primary {
-  width: 100%;
-  padding: 14px;
+  width: min(100%, 470px);
+  align-self: center;
+  padding: 12px;
   border-radius: 10px;
   border: none;
   background: var(--text-main);
   color: white;
-  font-weight: 700;
+  font-weight: 600;
   font-size: 1rem;
   cursor: pointer;
   transition:
@@ -133,16 +121,37 @@
   background: var(--success-color);
 }
 
+@media (max-width: 500px) {
+  .btn-primary {
+    width: auto;
+    align-self: flex-end;
+    padding: 11px;
+    font-size: 0.92rem;
+  }
+}
+
 .btn-icon {
   background: transparent;
   border: 1px solid var(--border-light);
   padding: 8px 16px;
   border-radius: 8px;
+  font-size: 0.875rem;
   font-weight: 600;
+  color: var(--text-main);
   cursor: pointer;
+  transition: all 0.18s ease;
 }
 
-/* Alerts */
+.btn-icon:hover {
+  background: #ebebea;
+  border-color: var(--border-heavy);
+}
+
+.btn-icon:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
 .alert {
   padding: 12px;
   border-radius: 8px;
@@ -158,7 +167,6 @@
   border: 1px solid #a7f3d0;
 }
 
-/* Animations */
 .slide-up-enter-active,
 .slide-up-leave-active {
   transition: all 0.3s ease;
@@ -174,14 +182,14 @@
 
 .skeleton-grid {
   display: grid;
-  grid-template-columns: repeat(9, 50px);
+  grid-template-columns: repeat(9, min(50px, calc((100vw - 52px) / 9)));
   gap: 1px;
-  background: #e2e8f0;
+  background: #e0e0d8;
 }
 .skeleton-cell {
-  width: 50px;
-  height: 50px;
-  background: #f1f5f9;
+  width: min(50px, calc((100vw - 52px) / 9));
+  height: min(50px, calc((100vw - 52px) / 9));
+  background: #ebebea;
   animation: pulse 1.5s infinite;
 }
 @keyframes pulse {

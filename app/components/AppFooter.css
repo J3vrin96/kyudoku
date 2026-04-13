@@ -3,7 +3,7 @@
   margin-top: auto;
   padding: 2.5rem 0;
   border-top: 1px solid var(--border-light);
-  color: #94a3b8;
+  color: var(--text-muted);
 }
 
 .footer__content {
@@ -34,11 +34,11 @@
 
 .footer__stack-tag {
   font-size: 0.7rem;
-  background: #f1f5f9;
+  background: #ebebea;
   padding: 2px 8px;
   border-radius: 4px;
   font-weight: 600;
-  color: #64748b;
+  color: var(--text-muted);
 }
 
 @media (min-width: 768px) {

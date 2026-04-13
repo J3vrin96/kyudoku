@@ -1,17 +1,20 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap");
 @import url("animate.css");
 
 :root {
   --font-primary: "Inter", sans-serif;
-  --font-secondary: "Inter", sans-serif;
-  --bg-color: #f8fafc;
+  --bg-color: #f4f4f0;
   --surface-color: #ffffff;
-  --primary-accent: #2563eb;
-  --success-color: #10b981;
-  --error-color: #ef4444;
-  --text-main: #1e293b;
-  --border-heavy: #1e293b;
-  --border-light: #cbd5e1;
+  --header-bg: #111112;
+  --header-text: #f4f4f0;
+  --primary-accent: #3730a3;
+  --success-color: #166534;
+  --error-color: #b91c1c;
+  --text-main: #111112;
+  --text-muted: #71717a;
+  --border-heavy: #111112;
+  --border-light: #e2e2da;
+  --shadow-md: 0 2px 12px rgba(17, 17, 18, 0.06), 0 6px 24px rgba(17, 17, 18, 0.04);
 }
 
 * {
@@ -30,10 +33,4 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-.layout {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 40px 20px;
-  min-height: 100vh;
-}
+

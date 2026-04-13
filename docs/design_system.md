@@ -1,67 +1,96 @@
-# 🎨 Design System
+# Design System
 
-The Kyudoku application follows a **"Zen Minimalist"** design philosophy, prioritizing clarity and focus on gameplay while maintaining a clean, modern aesthetic.
+Kyudoku follows an **minimalist & Japanese-inspired** design philosophy — a pared-down aesthetic inspired by Japanese minimalism, combining high contrast with generous whitespace and a muted natural palette.
 
 ## CSS Custom Properties
 
-All design tokens are defined as CSS variables in [`app/assets/css/main.css`](../app/assets/css/main.css) for easy theming and maintainability.
+All design tokens are defined as CSS variables in [`app/assets/css/main.css`](../app/assets/css/main.css).
 
 ```css
 :root {
   --font-primary: "Inter", sans-serif;
-  --font-secondary: "Inter", sans-serif;
-  --bg-color: #f8fafc;
+  --bg-color: #f4f4f0;
   --surface-color: #ffffff;
-  --primary-accent: #2563eb;
-  --success-color: #10b981;
-  --error-color: #ef4444;
-  --text-main: #1e293b;
-  --border-heavy: #1e293b;
-  --border-light: #cbd5e1;
+  --header-bg: #111112;
+  --header-text: #f4f4f0;
+  --primary-accent: #3730a3;
+  --success-color: #166534;
+  --error-color: #b91c1c;
+  --text-main: #111112;
+  --text-muted: #71717a;
+  --border-heavy: #111112;
+  --border-light: #e2e2da;
+  --shadow-md: 0 2px 12px rgba(17,17,18,0.06), 0 6px 24px rgba(17,17,18,0.04);
 }
 ```
 
 ## Color Palette
 
-| Token | Color | Hex | Usage |
-|-------|-------|-----|-------|
-| **Background** | Off-white | `#F8FAFC` | Main page background - reduces eye strain |
-| **Surface** | Pure white | `#FFFFFF` | Game board and card containers |
-| **Primary Accent** | Blue-600 | `#2563EB` | User-entered numbers, interactive elements |
-| **Success** | Emerald-500 | `#10B981` | Completion feedback, valid states |
-| **Error** | Red-500 | `#EF4444` | Invalid cell values, validation errors |
-| **Text** | Slate-900 | `#1E293B` | Primary text content |
-| **Border Heavy** | Slate-900 | `#1E293B` | 3x3 Sudoku block separators |
-| **Border Light** | Slate-300 | `#CBD5E1` | Individual cell borders |
+| Token | Hex | Usage |
+|-------|-----|-------|
+| `--bg-color` | `#f4f4f0` | Main page background — off-white, warm tint |
+| `--surface-color` | `#ffffff` | Game board and card containers |
+| `--header-bg` | `#111112` | Header background — near-black |
+| `--header-text` | `#f4f4f0` | Header text and icon color |
+| `--primary-accent` | `#3730a3` | User-entered numbers, interactive elements (Indigo-800) |
+| `--success-color` | `#166534` | Completion feedback, valid states (Green-800) |
+| `--error-color` | `#b91c1c` | Invalid cell values, validation errors (Red-700) |
+| `--text-main` | `#111112` | Primary text — near-black, high contrast |
+| `--text-muted` | `#71717a` | Secondary text, labels, captions (Zinc-500) |
+| `--border-heavy` | `#111112` | 3×3 Sudoku block separators |
+| `--border-light` | `#e2e2da` | Individual cell borders, dividers |
+| `--shadow-md` | — | Subtle layered box-shadow for cards |
 
 ## Typography
 
-| Type | Font | Weight | Use Case |
-|------|------|--------|----------|
-| Primary | Inter | 400, 600, 700 | All text content |
-| Secondary | Inter | 400, 600, 700 | Alternative hierarchy |
+**Font:** Inter (Google Fonts), weights 400–900.
 
-**Rationale:** Inter is a modern, geometric sans-serif optimized for screen legibility, especially with numeric content at various scales.
+```
+https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap
+```
 
-**Font Import:** [Google Fonts](https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap)
+Inter is a geometric sans-serif optimized for screen legibility, especially with numeric content. Heavy weights (800–900) are used for headings and the logo to create visual anchoring.
+
+## Header
+
+The header uses a full-width dark band (`--header-bg`) creating a strong visual break from the content area. The logo combines a 3×3 SVG grid icon (referencing the Sudoku board) with the app name in `font-weight: 900`. The GitHub link is styled as a ghost button with a light border on the dark background.
 
 ## Layout & Spacing
 
-- **Container Max-Width:** `1200px` - Optimal for content at all device sizes
-- **Padding Strategy:** Responsive padding (20px on mobile, 40px on desktop)
-- **Flexbox-first:** Modern layout system for responsive design
-- **Box-sizing:** `border-box` - Intuitive dimension calculations
+- **Main content padding:** `2rem 1rem` — ensures horizontal breathing room on all screen sizes including mobile
+- **Game container max-width:** `500px` — constrains the board to a comfortable reading width
+- **Board card padding:** `8px` with `border-radius: 12px` and `--shadow-md`
+- **Flexbox-first** layout throughout
+
+## Responsive Grid
+
+Cell sizes scale fluidly using CSS `min()` — no breakpoints needed:
+
+```css
+.cell {
+  width: min(50px, calc((100vw - 52px) / 9));
+  height: min(50px, calc((100vw - 52px) / 9));
+  font-size: clamp(0.85rem, 3.5vw, 1.25rem);
+}
+```
+
+The `52px` offset accounts for cumulative paddings (layout `1rem × 2`, board-card `8px × 2`, board border `2px × 2`). This ensures the grid never overflows on narrow screens (e.g. 375px → ~36px/cell).
 
 ## Interactive Elements
 
-- **Hover States:** Subtle transitions guide user interactions
-- **Focus States:** Clear visual indicators for keyboard navigation
-- **Touch Support:** Optimized for both keyboard and touch input
-- **Animations:** Smooth fade-in and transitions using Animate.css
+- **Hover:** Subtle tint (`#ebebea` background)
+- **Active cell:** Indigo tint (`#e0e7ff`) with inset `2px` accent border
+- **Initial cells:** Bold weight on `#f2f2ef` background — visually distinct from user input
+- **Error cells:** Red text on `#fef2f2` background
+- **Transitions:** `0.15s ease` on all interactive cells; `0.18s ease` on buttons
 
-## Key Features
+## Animations
 
-✅ **Accessibility:** High contrast ratios for readability (WCAG compliant)  
-✅ **Responsiveness:** Mobile-first approach with fluid scaling  
-✅ **Performance:** CSS variables for efficient theming  
-✅ **Consistency:** Centralized token definitions prevent style drift
+Animate.css is imported globally for entrance animations. The win/error alert uses a custom `slide-up` Vue transition (`translateY(10px)` enter, `translateY(-10px)` leave).
+
+## Key Principles
+
+- **High contrast** between text and background for readability (WCAG AA)
+- **No decorative color** — accent colors carry semantic meaning only
+- **Fluid sizing** over breakpoints — components adapt without media query steps
+- **Centralized tokens** — all colors and shadows defined once in `main.css`
