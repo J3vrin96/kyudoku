@@ -39,6 +39,11 @@ For detailed information about the project structure, state management, and comp
 
 The application follows a **"Zen Minimalist"** aesthetic. See [docs/design_system.md](docs/design_system.md) for details.
 
+## ☁️ Hosting
+
+The project is hosted on Cloudflare Pages.
+For deployment details, see [docs/hosting.md](docs/hosting.md).
+
 ## 🧪 Testing
 
 Vitest + Vue Test Utils for component and utility testing.
